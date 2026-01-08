@@ -133,5 +133,22 @@
 
 ---
 
+# MAS 智能营销助手
+
+MAS（Marketing Agent System）是面向医美与美妆场景的多智能体营销助手。后端基于 FastAPI 与 LangGraph，围绕“线程 → 工作流 → 智能体”构建会话处理链路，并配套 Redis、Elasticsearch、Milvus 等存储选项以及 Langfuse 观测平台。仓库同时包含 Next.js 前端和完整的 Docker Compose 环境，便于快速体验与调试。
+
+## 功能亮点
+
+- LangGraph 驱动的多智能体工作流，内置聊天、合规、产品、情感、记忆等模块，位于 `api/core/agents` 与 `api/core/workflows`
+- FastAPI 服务分层清晰：`controllers` 提供路由，`services` 聚合业务逻辑，`models`/`schemas` 定义数据约束
+- 轻量化多 LLM 运行时（`api/infra/runtimes`），默认支持 OpenAI、Anthropic，并可通过 `data/models.yaml` 扩展模型列表
+- 会话记忆覆盖 Redis 短期存储（ConversationStore）、可选 Elasticsearch 长期索引与 Milvus 向量检索
+- `docker/` 目录提供开发/生产 Compose 文件和 Langfuse 观测链路，适合端到端联调
+- `web/` 下的 Next.js 应用用于运营平台与可视化面板（详见子目录自带文档）
+
+<img src="images/text/mas.png" alt="合作" style="border-radius: 6px; object-fit: contain; max-width: 400px; max-height: 300px; width: auto; height: auto;">
+
+---
+
 如果感兴趣，请联系 [客隆体AI](https://www.consumerclone.com/)
 
